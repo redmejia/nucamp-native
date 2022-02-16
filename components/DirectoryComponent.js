@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { FlatList} from 'react-native';
+import { ListItem, Avatar } from 'react-native-elements';
 import { CAMPSITES } from '../shared/campsites';
 
 class Directory extends Component {
@@ -20,12 +20,13 @@ class Directory extends Component {
         const { navigate } = this.props.navigation;
         const renderDirectoryItem = ({ item }) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
-                    leftAvatar={{ source: require('./images/react-lake.jpg') }}
-                />
+                <ListItem>
+                    <Avatar rounded title={item.name} source={{ uri: require('./images/react-lake.jpg') }} />
+                    <ListItem.Content>
+                        <ListItem.Title onPress={()=> navigate('CampsiteInfo', {campsiteId : item.id})}>{item.name}</ListItem.Title>
+                        <ListItem.Subtitle>{item.subtitle}</ListItem.Subtitle>
+                    </ListItem.Content>
+                </ListItem>
             );
         };
 
