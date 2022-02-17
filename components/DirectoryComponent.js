@@ -17,16 +17,13 @@ class Directory extends Component {
     }
 
     render() {
-        const { navigate } = this.props.navigation;
         const renderDirectoryItem = ({ item }) => {
             return (
-                <ListItem>
-                    <Avatar rounded title={item.name} source={{ uri: require('./images/react-lake.jpg') }} />
-                    <ListItem.Content>
-                        <ListItem.Title onPress={()=> navigate('CampsiteInfo', {campsiteId : item.id})}>{item.name}</ListItem.Title>
-                        <ListItem.Subtitle>{item.subtitle}</ListItem.Subtitle>
-                    </ListItem.Content>
-                </ListItem>
+                <ListItem 
+                    title={item.name}
+                    subtitle={item.description}
+                    leftAvatar={{source : require('./images/react-lake.jpg')}}
+                />
             );
         };
 

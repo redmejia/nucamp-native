@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
 import { CAMPSITES } from '../shared/campsites';
 import { PROMOTIONS } from '../shared/promotions';
 import { PARTNERS } from '../shared/partners';
 
+{/* <Card
+image={require('./images/react-lake.jpg')}
+style={style.image}
+featuredTitle={item.name}
+> */}
 function RenderItem({ item }) {
     if (item) {
         return (
             <Card
-                featuredTitle={item.name}
                 image={require('./images/react-lake.jpg')}
+                style={style.image}
+                featuredTitle={item.name}
             >
                 <Text style={{ margin: 10 }}>
                     {item.description}
@@ -52,5 +58,12 @@ class Home extends Component {
         );
     }
 }
+
+const style = StyleSheet.create({
+    image: {
+        width: 100,
+        height: 100,
+    }
+})
 
 export default Home;
