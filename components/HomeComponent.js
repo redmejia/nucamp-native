@@ -5,11 +5,6 @@ import { CAMPSITES } from '../shared/campsites';
 import { PROMOTIONS } from '../shared/promotions';
 import { PARTNERS } from '../shared/partners';
 
-{/* <Card
-image={require('./images/react-lake.jpg')}
-style={style.image}
-featuredTitle={item.name}
-> */}
 function RenderItem({ item }) {
     if (item) {
         return (
