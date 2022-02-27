@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-import { CAMPSITES } from '../shared/campsites';
-import { PROMOTIONS } from '../shared/promotions';
-import { PARTNERS } from '../shared/partners';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+
+const mapStateToProps = state => {
+    return {
+        campsites: state.campsites,
+        promotions: state.promotions,
+        partners: state.partners
+    };
+};
 
 function RenderItem({ item }) {
     if (item) {
         return (
             <Card
-                image={require('./images/react-lake.jpg')}
+                image={{ uri: baseUrl + item.image }}
                 style={style.image}
                 featuredTitle={item.name}
             >
@@ -41,13 +49,13 @@ class Home extends Component {
         return (
             <ScrollView>
                 <RenderItem
-                    item={this.state.campsites.filter(campsite => campsite.featured)[0]}
+                    item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
                 />
                 <RenderItem
-                    item={this.state.promotions.filter(promotion => promotion.featured)[0]}
+                    item={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}
                 />
                 <RenderItem
-                    item={this.state.partners.filter(partner => partner.featured)[0]}
+                    item={this.props.partners.partners.filter(partner => partner.featured)[0]}
                 />
             </ScrollView>
         );
@@ -61,4 +69,4 @@ const style = StyleSheet.create({
     }
 })
 
-export default Home;
+export default connect(mapStateToProps)(Home);
