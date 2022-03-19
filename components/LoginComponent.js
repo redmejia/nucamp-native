@@ -163,7 +163,6 @@ class RegisterTab extends Component {
             if (!capturedImage.cancelled) {
                 console.log(capturedImage);
                 this.processImage(capturedImage.uri)
-                // this.setState({ imageUrl: capturedImage.uri });
             }
         }
     }
